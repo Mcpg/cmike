@@ -1,0 +1,3 @@
+
+LOCAL_SOURCES = string.c
+LOCAL_DIRECTORIES =
