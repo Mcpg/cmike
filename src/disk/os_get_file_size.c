@@ -1,6 +1,6 @@
 #include <mikeos.h>
 
-char file_not_found_flag;
+char file_not_found_flag = 0;
 
 struct gp_registers _os_get_file_size(struct gp_registers regs)
 {

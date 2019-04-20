@@ -13,7 +13,13 @@
 
 #include <mikeos_disk.h>
 #include <mikeos_keyboard.h>
+#include <mikeos_math.h>
+#include <mikeos_misc.h>
+#include <mikeos_ports.h>
+#include <mikeos_screen.h>
 #include <mikeos_string.h>
+#include <mikeos_sound.h>
+#include <mikeos_basic.h>
 
 void panic(char* text);
 void os_main();

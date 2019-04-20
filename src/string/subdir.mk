@@ -12,6 +12,7 @@ LOCAL_SOURCES := \
 		os_string_chomp.c \
 		os_string_strip.c \
 		os_string_compare.c \
+		os_string_strincmp.c \
 		os_string_parse.c \
 		os_string_to_int.c \
 		os_int_to_string.c \
@@ -20,6 +21,7 @@ LOCAL_SOURCES := \
 		os_set_time_fmt.c \
 		os_get_time_string.c \
 		os_set_date_fmt.c \
-		os_get_date_string.c
+		os_get_date_string.c \
+		os_string_tokenize.c
 
 LOCAL_DIRECTORIES =

@@ -37,5 +37,6 @@ DEF_SYSCALL(void,  os_set_time_fmt, char flag)
 DEF_SYSCALL(void,  os_get_time_string, char* dest)
 DEF_SYSCALL(void,  os_set_date_fmt, int flag)
 DEF_SYSCALL(void,  os_get_date_string, char* dest)
+DEF_SYSCALL(int,   os_string_tokenize, char separator, char* beginning)
 
 #endif
