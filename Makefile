@@ -1,28 +1,30 @@
+
+PROJECT_ROOT_DIR = $(shell pwd)
+BUILD_MODULES ?= kernel diskimg
+AUTO_MODULES ?= kernel
+
 include config.mk
 
-SOURCES =
-define INCLUDE_DIRECTORY
-$(eval include $1/subdir.mk)
-$(eval SOURCES := $(SOURCES) $(patsubst $(SRC_DIR)/%,%,$(addprefix $1/,$(LOCAL_SOURCES))))
-$(eval $(foreach directory,$(LOCAL_DIRECTORIES),$(eval $(call INCLUDE_DIRECTORY,$1/$(directory)))))
+export
+
+.PHONY: all clean $(BUILD_MODULES)
+
+all: $(AUTO_MODULES)
+
+clean: $(addsuffix _clean,$(BUILD_MODULES))
+
+#######################################
+
+# $1 - module name
+define MODULE_TEMPLATE
+
+$(1):
+	$(MKDIR) $(DISK_ROOT_DIRECTORY)
+	$(MAKE) -C $(1) all
+
+$(1)_clean:
+	$(MAKE) -C $(1) clean
+
 endef
-$(eval $(call INCLUDE_DIRECTORY,$(SRC_DIR)))
 
-OBJECTS = $(patsubst %.asm,$(BIN_DIR)/%.o,$(patsubst %.c,$(BIN_DIR)/%.o,$(SOURCES)))
-
-all: $(RESULT_FILE)
-
-clean:
-	$(RM) $(RESULT_FILE) $(OBJECTS)
-
-$(RESULT_FILE): $(LINKER_SCRIPT) $(OBJECTS)
-	-@$(MKDIR) $(dir $@)
-	$(LD) $(LDFLAGS) -o $@ -T $^
-
-$(BIN_DIR)/%.o: $(SRC_DIR)/%.c
-	-@$(MKDIR) $(dir $@)
-	$(CC) $(CFLAGS) -o $@ -c $<
-
-$(BIN_DIR)/%.o: $(SRC_DIR)/%.asm
-	-@$(MKDIR) $(dir $@)
-	$(AS) $(ASFLAGS) -o $@ $<
+$(foreach module,$(BUILD_MODULES),$(eval $(call MODULE_TEMPLATE,$(module))))
