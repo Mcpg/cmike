@@ -9,7 +9,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 dd if=/dev/zero of=$FLOPPY_IMG_PATH bs=512 count=2880
-dd if=$PROJECT_ROOT_DIR/bootloader/bootload.bin of=$FLOPPY_IMG_PATH bs=512 count=1 conv=notrunc
+dd if=$PROJECT_ROOT_DIR/bootloader/bootloader.bin of=$FLOPPY_IMG_PATH bs=512 count=1 conv=notrunc
 
 rm -rf tmp
 mkdir tmp
