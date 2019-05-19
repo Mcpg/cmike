@@ -23,7 +23,8 @@
 %endmacro
 
 section .call_vector
-    def_call_vector os_main
+    extern _os_main
+    jmp _os_main
     def_call_vector os_print_string
     def_call_vector os_move_cursor
     def_call_vector os_clear_screen

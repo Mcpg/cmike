@@ -4,6 +4,10 @@
 #define MIKEOS_VER "4.6.1"
 #define MIKEOS_API_VER 17
 
+#define OS_SEGMENT 0x2000
+#define OS_STACK_SIZE 4096
+
+#include <stdint.h>
 #include <bios.h>
 
 /* return type, name and its "original" parameters */
@@ -21,8 +25,11 @@
 #include <mikeos_sound.h>
 #include <mikeos_basic.h>
 
-void panic(char* text);
-void os_main();
+void os_main(uint16_t boot_device);
+void panic(char* cause);
+
+extern void* os_stack_bottom;
+extern void* os_stack_top;
 
 extern void* kernel_disk_buffer;
 extern void* program_space;

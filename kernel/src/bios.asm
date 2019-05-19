@@ -1,16 +1,15 @@
 section .text
 
 %macro int_func_template 1
-    mov word [temp_sp], sp
-    pop sp
-    mov word [temp_sp2], sp
-    popa
-    int %1
-    mov sp, word [temp_sp2]
     pusha
-    mov sp, word [temp_sp]
-    push sp
-    mov sp, word [temp_sp]
+    pop si
+    push si
+
+    
+
+    int %1
+    
+    popa
 %endmacro
 
 global int10h

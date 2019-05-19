@@ -1,7 +1,9 @@
 #include <mikeos.h>
 
-struct gp_registers _os_main(struct gp_registers regs)
+void os_main(uint16_t boot_device)
 {
-    panic("uwu that's not meant to be");
-    return regs;
+    __asm__ __volatile__("mov $0x0E, %ah;mov '!', %al;int $0x10");
+
+    panic("End of os_main reached");
+    while(1);
 }
