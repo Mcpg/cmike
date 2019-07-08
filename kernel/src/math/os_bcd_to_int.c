@@ -7,6 +7,5 @@ void _os_bcd_to_int(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 unsigned int os_bcd_to_int(unsigned char bcd)
 {
-    /* TODO */
-    return 0;
+    return ((bcd >> 4) & 0x0F) * 10 + (bcd & 0xF);
 }
