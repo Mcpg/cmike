@@ -7,10 +7,6 @@ void _os_clear_screen(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 void os_clear_screen()
 {
-    /* Just scroll down 100 times */
-    for (int i = 0; i < 100; i++)
-    {
-        os_print_string("\n");
-    }
-    os_move_cursor(0, 0);
+    /* Reset the video mode */
+    asm("int $0x10" : : "a" (0x0003));
 }
