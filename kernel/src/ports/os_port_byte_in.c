@@ -7,5 +7,7 @@ void _os_port_byte_in(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 char os_port_byte_in(int address)
 {
-    return 0;
+    char retval;
+    asm volatile("inb %1, %0" : "=a" (retval) : "Nd" (address));
+    return retval;
 }
