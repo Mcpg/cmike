@@ -3,10 +3,32 @@
 
 #include <mikeos.h>
 
+#define COLOR_BLACK         0x0
+#define COLOR_BLUE          0x1
+#define COLOR_GREEN         0x2
+#define COLOR_CYAN          0x3
+#define COLOR_RED           0x4
+#define COLOR_MAGENTA       0x5
+#define COLOR_BROWN         0x6
+#define COLOR_LIGHT_GRAY    0x7
+#define COLOR_DARK_GRAY     0x8
+#define COLOR_LIGHT_BLUE    0x9
+#define COLOR_LIGHT_GREEN   0xA
+#define COLOR_LIGHT_CYAN    0xB
+#define COLOR_LIGHT_RED     0xC
+#define COLOR_LIGHT_MAGENTA 0xD
+#define COLOR_YELLOW        0xE
+#define COLOR_WHITE         0xF
+
+#define COLOR_CREATE(fg, bg, blink) \
+        ((blink & 1) << 7) | ((bg & 0b01110000) << 4) | (fg & 0b00001111)
+
+#define DEFAULT_COLOR COLOR_CREATE(COLOR_WHITE, COLOR_BLACK, 0)
+
 #define SCREEN_LINE_SINGLE 0
 #define SCREEN_LINE_DOUBLE 1
 
-DEF_SYSCALL(void, os_print_string, char* string)
+DEF_SYSCALL(void, os_print_string, char* string, char color)
 DEF_SYSCALL(void, os_clear_screen)
 DEF_SYSCALL(void, os_move_cursor, char row, char column)
 DEF_SYSCALL(void, os_get_cursor_pos, char* row, char* column)
