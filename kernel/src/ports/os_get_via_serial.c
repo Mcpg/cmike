@@ -15,5 +15,8 @@ void _os_get_via_serial(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 int os_get_via_serial(char* byte)
 {
-    return 0;
+    int retval = 0;
+    asm("int $0x14" : "=a" (retval) : "a" (0x0200), "d" (0));
+    *byte = retval & 0xFF;
+    return (retval >> 8) & 0xFF;
 }
