@@ -27,6 +27,7 @@
 
 void os_main(uint16_t boot_device);
 void panic(char* cause);
+void start_cli();
 
 extern void* os_stack_bottom;
 extern void* os_stack_top;

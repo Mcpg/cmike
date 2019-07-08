@@ -5,7 +5,8 @@
 void os_main(uint16_t boot_device)
 {
     os_print_string("Welcome to CMike!\r\n", WELCOME_COLOR);
-    os_print_string("-----------------\r\n\n", WELCOME_COLOR);
+    os_print_string("-----------------\r\n", WELCOME_COLOR);
+    start_cli();
     panic("End of os_main reached");
     HALT();
 }
