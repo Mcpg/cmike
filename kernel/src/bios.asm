@@ -4,9 +4,9 @@ section .text
 
 global check_zf
 check_zf:
-    jz .yes
     xor ax, ax
+    jz .yes
     ret
     .yes:
-    mov ax, 1
+    inc ax
     ret
