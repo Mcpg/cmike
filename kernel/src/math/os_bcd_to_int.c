@@ -1,12 +1,12 @@
 #include <mikeos.h>
 
-struct gp_registers _os_bcd_to_int(struct gp_registers regs)
+void _os_bcd_to_int(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_bcd_to_int(regs.ax & 0x00FF);
-    return regs;
+    *ax = os_bcd_to_int(*ax & 0x00FF);
 }
 
 unsigned int os_bcd_to_int(unsigned char bcd)
 {
+    /* TODO */
     return 0;
 }

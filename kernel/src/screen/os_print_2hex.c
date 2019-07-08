@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_print_2hex(struct gp_registers regs)
+void _os_print_2hex(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_print_2hex(regs.ax & 0x00FF);
-    return regs;
+    os_print_2hex(*ax & 0x00FF);
 }
 
 void os_print_2hex(char number)

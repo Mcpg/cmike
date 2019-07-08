@@ -1,12 +1,11 @@
 #include <mikeos.h>
 
-struct gp_registers _os_long_int_negate(struct gp_registers regs)
+void _os_long_int_negate(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_long_int_negate((int*) regs.dx, (int*) regs.ax);
-    return regs;
+    os_long_int_negate((int*) *dx, (int*) *ax);
 }
 
 void os_long_int_negate(int* hi, int* lo)
 {
-    
+    /* TODO */
 }

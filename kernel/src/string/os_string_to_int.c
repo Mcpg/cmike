@@ -11,10 +11,9 @@ static inline int pow(int base, int power)
     return base;
 }
 
-struct gp_registers _os_string_to_int(struct gp_registers regs)
+void _os_string_to_int(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_string_to_int((char*) regs.si);
-    return regs;
+    *ax = os_string_to_int((char*) *si);
 }
 
 unsigned int os_string_to_int(char* string)

@@ -2,10 +2,9 @@
 
 char time_format_flag = 0;
 
-struct gp_registers _os_set_time_fmt(struct gp_registers regs)
+void _os_set_time_fmt(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_set_time_fmt(regs.ax & 0x00FF);
-    return regs;
+    os_set_time_fmt(*ax & 0x00FF);
 }
 
 void os_set_time_fmt(char flag)

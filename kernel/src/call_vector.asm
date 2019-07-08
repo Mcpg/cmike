@@ -5,23 +5,53 @@
 ; syscall handler for a method.
 %macro def_call_vector 1
 
-    section .call_vector
-        jmp _asm_%1
-
     section .text
-        global _asm_%1
+        global _asm_%1:function (_asm_%1.end - _asm_%1)
         _asm_%1:
-            pusha
+
+            mov word [saved_ax], ax
+            mov word [saved_bx], bx
+            mov word [saved_cx], cx
+            mov word [saved_dx], dx
+            mov word [saved_si], si
+            mov word [saved_di], di
+
+            push saved_di
+            push saved_si
+            push saved_dx
+            push saved_cx
+            push saved_bx
+            push saved_ax
 
             extern _%1
             call _%1
 
-            mov sp, ax
-            popa
+            add sp, 12
+
+            mov ax, word [saved_ax]
+            mov bx, word [saved_bx]
+            mov cx, word [saved_cx]
+            mov dx, word [saved_dx]
+            mov si, word [saved_si]
+            mov di, word [saved_di]
+
             ret
+            .end:
+    
+    section .call_vector
+        jmp _asm_%1
 
 %endmacro
 
+section .bss
+    saved_ax: resw 1
+    saved_bx: resw 1
+    saved_cx: resw 1
+    saved_dx: resw 1
+    saved_si: resw 1
+    saved_di: resw 1
+
+; Source: MikeOS 4.6 call vectors from /source/kernel.asm
 section .call_vector
     extern _os_main
     jmp _os_main

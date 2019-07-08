@@ -12,10 +12,9 @@ static inline int base_convert_ch2i(int base, char digit)
         return digit - '0' - 7;
 }
 
-struct gp_registers _os_long_int_to_string(struct gp_registers regs)
+void _os_long_int_to_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_long_int_to_string(regs.dx, regs.ax, regs.bx, (char*) regs.di);
-    return regs;
+    os_long_int_to_string(*dx, *ax, *bx, (char*) *di);
 }
 
 void os_long_int_to_string(int hi, int lo, int base, char* destination)

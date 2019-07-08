@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_sint_to_string(struct gp_registers regs)
+void _os_sint_to_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_sint_to_string((int) regs.ax);
-    return regs;
+    *ax = os_sint_to_string((int) *ax);
 }
 
 char* os_sint_to_string(int number)

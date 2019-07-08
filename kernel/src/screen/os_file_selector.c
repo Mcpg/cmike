@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_file_selector(struct gp_registers regs)
+void _os_file_selector(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    if (os_file_selector((char*) regs.ax))
+    if (os_file_selector((char*) *ax))
     {
         __asm__ __volatile__("clc");
     }
@@ -10,7 +10,6 @@ struct gp_registers _os_file_selector(struct gp_registers regs)
     {
         __asm__ __volatile__("stc");
     }
-    return regs;
 }
 
 int os_file_selector(char* file)

@@ -2,10 +2,9 @@
 
 int date_format_flag = 0;
 
-struct gp_registers _os_set_date_fmt(struct gp_registers regs)
+void _os_set_date_fmt(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_set_date_fmt(regs.ax);
-    return regs;
+    os_set_date_fmt(*ax);
 }
 
 void os_set_date_fmt(int flag)

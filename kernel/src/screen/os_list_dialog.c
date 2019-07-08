@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_list_dialog(struct gp_registers regs)
+void _os_list_dialog(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    int result = os_list_dialog((char*) regs.ax, (char*) regs.bx, (char*) regs.cx);
+    int result = os_list_dialog((char*) *ax, (char*) *bx, (char*) *cx);
     if (result)
     {
         __asm__ __volatile__("clc");
@@ -11,8 +11,7 @@ struct gp_registers _os_list_dialog(struct gp_registers regs)
     {
         __asm__ __volatile__("stc");
     }
-    regs.ax = result;
-    return regs;
+    *ax = result;
 }
 
 int os_list_dialog(char* strings, char* help1, char* help2)

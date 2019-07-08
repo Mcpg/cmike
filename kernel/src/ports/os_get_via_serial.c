@@ -1,17 +1,16 @@
 #include <mikeos.h>
 
-struct gp_registers _os_get_via_serial(struct gp_registers regs)
+void _os_get_via_serial(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     char result;
     if (os_get_via_serial(&result))
     {
-        regs.ax = ((regs.ax & 0xFF00) ^ 0x8000) | (result & 0xFF);
+        *ax = ((*ax & 0xFF00) ^ 0x8000) | (result & 0xFF);
     }
     else
     {
-        regs.ax = regs.ax | 0x8000;
+        *ax = *ax | 0x8000;
     }
-    return regs;
 }
 
 int os_get_via_serial(char* byte)

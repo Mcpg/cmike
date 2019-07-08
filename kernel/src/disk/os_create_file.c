@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_create_file(struct gp_registers regs)
+void _os_create_file(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_create_file((char*) regs.ax);
-    return regs;
+    os_create_file((char*) *ax);
 }
 
 void os_create_file(char* path)

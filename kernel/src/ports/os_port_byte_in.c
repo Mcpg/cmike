@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_port_byte_in(struct gp_registers regs)
+void _os_port_byte_in(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = (regs.ax & 0xFF00) | os_port_byte_in(regs.dx); 
-    return regs;
+    *ax = (*ax & 0xFF00) | os_port_byte_in(*dx); 
 }
 
 char os_port_byte_in(int address)

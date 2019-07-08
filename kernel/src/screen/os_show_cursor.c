@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_show_cursor(struct gp_registers regs)
+void _os_show_cursor(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     os_show_cursor();
-    return regs;
 }
 
 void os_show_cursor()

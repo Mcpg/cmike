@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_lowercase(struct gp_registers regs)
+void _os_string_lowercase(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_lowercase((char*) regs.ax);
-    return regs;
+    os_string_lowercase((char*) *ax);
 }
 
 void os_string_lowercase(char* string)

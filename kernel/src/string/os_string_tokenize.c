@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_tokenize(struct gp_registers regs)
+void _os_string_tokenize(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.di = os_string_tokenize(regs.ax & 0x00FF, (char*) regs.si);
-    return regs;
+    *di = os_string_tokenize(*ax & 0x00FF, (char*) *si);
 }
 
 int os_string_tokenize(char separator, char* beginning)

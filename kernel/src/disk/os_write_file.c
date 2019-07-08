@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_write_file(struct gp_registers regs)
+void _os_write_file(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    if (os_write_file((char*) regs.ax, (void*) regs.bx, regs.cx))
+    if (os_write_file((char*) *ax, (void*) *bx, *cx))
     {
         __asm__ __volatile__("clc");
     }
@@ -10,7 +10,6 @@ struct gp_registers _os_write_file(struct gp_registers regs)
     {
         __asm__ __volatile__("stc");
     }
-    return regs;
 }
 
 /* Returns 0 on failure */

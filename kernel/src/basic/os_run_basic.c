@@ -1,12 +1,11 @@
 #include <mikeos.h>
 
-struct gp_registers _os_run_basic(struct gp_registers regs)
+void _os_run_basic(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_run_basic((char*) regs.ax, regs.bx);
-    return regs;
+    os_run_basic((char*) *ax, *bx);
 }
 
 void os_run_basic(char* code, int size)
 {
-    
+    /* TODO */
 }

@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_get_api_version(struct gp_registers regs)
+void _os_get_api_version(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = (regs.ax & 0xFF00) | os_get_api_version();
-    return regs;
+    *ax = (*ax & 0xFF00) | os_get_api_version();
 }
 
 char os_get_api_version()

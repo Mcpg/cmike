@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_parse(struct gp_registers regs)
+void _os_string_parse(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_parse((char*) regs.si, &regs.ax, &regs.bx, &regs.cx, &regs.dx);
-    return regs;
+    os_string_parse((char*) *si, ax, bx, cx, dx);
 }
 
 void os_string_parse(char* string, int* a, int* b, int* c, int* d)

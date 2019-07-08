@@ -12,7 +12,7 @@
 
 /* return type, name and its "original" parameters */
 #define DEF_SYSCALL(rettype, name, ...) \
-    struct gp_registers _##name(struct gp_registers regs); \
+    void _##name(int* ax, int* bx, int* cx, int* dx, int* si, int* di); \
     rettype name(__VA_ARGS__);
 
 #include <mikeos_disk.h>

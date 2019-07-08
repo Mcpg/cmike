@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_reverse(struct gp_registers regs)
+void _os_string_reverse(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_reverse((char*) regs.si);
-    return regs;
+    os_string_reverse((char*) *si);
 }
 
 void os_string_reverse(char* string)

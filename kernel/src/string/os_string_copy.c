@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_copy(struct gp_registers regs)
+void _os_string_copy(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_copy((char*) regs.si, (char*) regs.di);
-    return regs;
+    os_string_copy((char*) *si, (char*) *di);
 }
 
 void os_string_copy(char* source, char* destination)

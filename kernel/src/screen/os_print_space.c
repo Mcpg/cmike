@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_print_space(struct gp_registers regs)
+void _os_print_space(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     os_print_space();
-    return regs;
 }
 
 void os_print_space()

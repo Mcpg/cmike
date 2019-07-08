@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_charchange(struct gp_registers regs)
+void _os_string_charchange(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_charchange((char*) regs.si, regs.ax & 0x00FF, regs.bx & 0x00FF);
-    return regs;
+    os_string_charchange((char*) *si, *ax & 0x00FF, *bx & 0x00FF);
 }
 
 void os_string_charchange(char* string, char original, char replacement)

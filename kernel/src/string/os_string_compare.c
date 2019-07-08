@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_compare(struct gp_registers regs)
+void _os_string_compare(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    if (os_string_compare((char*) regs.si, (char*) regs.di))
+    if (os_string_compare((char*) *si, (char*) *di))
     {
         __asm__ __volatile__("stc");
     }
@@ -10,7 +10,6 @@ struct gp_registers _os_string_compare(struct gp_registers regs)
     {
         __asm__ __volatile__("clc");
     }
-    return regs;
 }
 
 int os_string_compare(char* s1, char* s2)

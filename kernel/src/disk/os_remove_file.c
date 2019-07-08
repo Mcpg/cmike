@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_remove_file(struct gp_registers regs)
+void _os_remove_file(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_remove_file((char*) regs.ax);
-    return regs;
+    os_remove_file((char*) *ax);
 }
 
 void os_remove_file(char* path)

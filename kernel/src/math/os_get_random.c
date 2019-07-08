@@ -1,12 +1,12 @@
 #include <mikeos.h>
 
-struct gp_registers _os_get_random(struct gp_registers regs)
+void _os_get_random(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.cx = os_get_random(regs.ax, regs.bx);
-    return regs;
+    *cx = os_get_random(*ax, *bx);
 }
 
 int os_get_random(int low, int high)
 {
+    /* TODO */
     return 0;
 }

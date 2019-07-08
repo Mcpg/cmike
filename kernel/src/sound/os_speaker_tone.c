@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_speaker_tone(struct gp_registers regs)
+void _os_speaker_tone(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_speaker_tone(regs.ax);
-    return regs;
+    os_speaker_tone(*ax);
 }
 
 void os_speaker_tone(int frequency)

@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_rename_file(struct gp_registers regs)
+void _os_rename_file(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    if (os_rename_file((char*) regs.ax, (char*) regs.bx))
+    if (os_rename_file((char*) *ax, (char*) *bx))
     {
         __asm__ __volatile__("clc");
     }
@@ -10,7 +10,6 @@ struct gp_registers _os_rename_file(struct gp_registers regs)
     {
         __asm__ __volatile__("stc");
     }
-    return regs;
 }
 
 int os_rename_file(char* path, char* new_name)

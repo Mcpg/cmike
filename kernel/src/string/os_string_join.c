@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_join(struct gp_registers regs)
+void _os_string_join(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_join((char*) regs.ax, (char*) regs.bx, (char*) regs.cx);
-    return regs;
+    os_string_join((char*) *ax, (char*) *bx, (char*) *cx);
 }
 
 void os_string_join(char* s1, char* s2, char* destination)

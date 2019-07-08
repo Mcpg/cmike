@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_fatal_error(struct gp_registers regs)
+void _os_fatal_error(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_fatal_error((char*) regs.ax);
-    return regs;
+    os_fatal_error((char*) *ax);
 }
 
 void os_fatal_error(char* text)

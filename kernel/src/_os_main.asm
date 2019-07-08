@@ -1,3 +1,5 @@
+    [bits 16]
+
 %include "kernel.asm"
 
 section .text
@@ -17,17 +19,10 @@ section .text
         .cont:
         sti
 
-        mov ah, 0x0E
-        mov al, '!'
-        ;int 0x10
-
         extern os_main
         push dx
-        ;jmp os_main
-        
-        mov ah, 0x0E
-        mov al, '!'
-        ;int 0x10
+        mov ax, os_main 
+        jmp ax
 
         cli
         hlt

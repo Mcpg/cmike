@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_speaker_off(struct gp_registers regs)
+void _os_speaker_off(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     os_speaker_off();
-    return regs;
 }
 
 void os_speaker_off()

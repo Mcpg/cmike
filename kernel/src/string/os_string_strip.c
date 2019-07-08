@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_strip(struct gp_registers regs)
+void _os_string_strip(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_strip((char*) regs.si, regs.ax & 0x00FF);
-    return regs;
+    os_string_strip((char*) *si, *ax & 0x00FF);
 }
 
 void os_string_strip(char* string, char ch)

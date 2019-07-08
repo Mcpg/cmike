@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_input_string(struct gp_registers regs)
+void _os_input_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_input_string((char*) regs.ax);
-    return regs;
+    os_input_string((char*) *ax);
 }
 
 void os_input_string(char* buffer)

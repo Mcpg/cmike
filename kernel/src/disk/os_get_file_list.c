@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_get_file_list(struct gp_registers regs)
+void _os_get_file_list(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_get_file_list((char*) regs.ax);
-    return regs;
+    os_get_file_list((char*) *ax);
 }
 
 void os_get_file_list(char* dest)

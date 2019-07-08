@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_print_digit(struct gp_registers regs)
+void _os_print_digit(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_print_digit(regs.ax);
-    return regs;
+    os_print_digit(*ax);
 }
 
 void os_print_digit(int digit)

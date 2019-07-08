@@ -1,12 +1,11 @@
 #include <mikeos.h>
 
-struct gp_registers _os_dump_registers(struct gp_registers regs)
+void _os_dump_registers(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_dump_registers(&regs);
-    return regs;
+    os_dump_registers(*ax, *bx, *cx, *dx, *si, *di);
 }
 
-void os_dump_registers(struct gp_registers* regs)
+void os_dump_registers(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     
 }

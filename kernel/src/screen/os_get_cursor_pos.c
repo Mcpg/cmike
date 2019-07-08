@@ -1,11 +1,10 @@
 #include <mikeos.h>
 
-struct gp_registers _os_get_cursor_pos(struct gp_registers regs)
+void _os_get_cursor_pos(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     char row, column;
     os_get_cursor_pos(&row, &column);
-    regs.dx = ((int) row << 8) | (column & 0xFF); 
-    return regs;
+    *dx = ((int) row << 8) | (column & 0xFF); 
 }
 
 void os_get_cursor_pos(char* row, char* column)

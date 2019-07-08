@@ -2,9 +2,9 @@
 
 char file_not_found_flag = 0;
 
-struct gp_registers _os_get_file_size(struct gp_registers regs)
+void _os_get_file_size(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.bx = os_get_file_size((char*) regs.ax);
+    *bx = os_get_file_size((char*) *ax);
     if (file_not_found_flag)
     {
         __asm__ __volatile__("stc");
@@ -13,7 +13,6 @@ struct gp_registers _os_get_file_size(struct gp_registers regs)
     {
         __asm__ __volatile__("clc");
     }
-    return regs;
 }
 
 unsigned int os_get_file_size(char* path)

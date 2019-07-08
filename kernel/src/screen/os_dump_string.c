@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_dump_string(struct gp_registers regs)
+void _os_dump_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_dump_string((char*) regs.si);
-    return regs;
+    os_dump_string((char*) *si);
 }
 
 void os_dump_string(char* string)

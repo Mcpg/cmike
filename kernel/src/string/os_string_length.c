@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_length(struct gp_registers regs)
+void _os_string_length(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_string_length((char*) regs.ax);
-    return regs;
+    *ax = os_string_length((char*) *ax);
 }
 
 int os_string_length(char* string)

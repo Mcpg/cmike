@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_load_file(struct gp_registers regs)
+void _os_load_file(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.bx = os_load_file((char*) regs.ax, (void*) regs.cx);
+    *bx = os_load_file((char*) *ax, (void*) *cx);
     if (file_not_found_flag)
     {
         __asm__ __volatile__("stc");
@@ -11,7 +11,6 @@ struct gp_registers _os_load_file(struct gp_registers regs)
     {
         __asm__ __volatile__("clc");
     }
-    return regs;
 }
 
 unsigned int os_load_file(char* path, void* dest)

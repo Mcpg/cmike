@@ -1,16 +1,15 @@
 #include <mikeos.h>
 
-struct gp_registers _os_serial_port_enable(struct gp_registers regs)
+void _os_serial_port_enable(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    if (os_serial_port_enable(regs.ax))
+    if (os_serial_port_enable(*ax))
     {
-        regs.ax = regs.ax ^ 0x8000;
+        *ax = *ax ^ 0x8000;
     }
     else
     {
-        regs.ax = regs.ax | 0x8000;
+        *ax = *ax | 0x8000;
     }
-    return regs;
 }
 
 int os_serial_port_enable(int mode)

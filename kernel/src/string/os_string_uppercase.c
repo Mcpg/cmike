@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_string_uppercase(struct gp_registers regs)
+void _os_string_uppercase(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_string_uppercase((char*) regs.ax);
-    return regs;
+    os_string_uppercase((char*) *ax);
 }
 
 void os_string_uppercase(char* string)

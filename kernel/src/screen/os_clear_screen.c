@@ -1,18 +1,16 @@
 #include <mikeos.h>
 
-struct gp_registers _os_clear_screen(struct gp_registers regs)
+void _os_clear_screen(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     os_clear_screen();
-    return regs;
 }
 
 void os_clear_screen()
 {
-    /* Just scroll down 25 times */
-    struct gp_registers regs;
-
-    for (int i = 0; i < 25; i++)
+    /* Just scroll down 100 times */
+    for (int i = 0; i < 100; i++)
     {
-
+        os_print_string("\n");
     }
+    os_move_cursor(0, 0);
 }

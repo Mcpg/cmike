@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_dialog_box(struct gp_registers regs)
+void _os_dialog_box(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_dialog_box((char*) regs.ax, (char*) regs.bx, (char*) regs.cx, regs.dx);
-    return regs;
+    *ax = os_dialog_box((char*) *ax, (char*) *bx, (char*) *cx, *dx);
 }
 
 int os_dialog_box(char* string1, char* string2, char* string3, int mode)

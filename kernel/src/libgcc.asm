@@ -1,3 +1,5 @@
+    [bits 16]
+
 ; Whenever GCC decides to put embed some of its
 ; functions in the kernel, you can implement
 ; them here.

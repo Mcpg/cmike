@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_print_horiz_line(struct gp_registers regs)
+void _os_print_horiz_line(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_print_horiz_line(regs.ax);
-    return regs;
+    os_print_horiz_line(*ax);
 }
 
 void os_print_horiz_line(int line_type)

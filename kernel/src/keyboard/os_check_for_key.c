@@ -1,16 +1,13 @@
 #include <mikeos.h>
 
-struct gp_registers _os_check_for_key(struct gp_registers regs)
+void _os_check_for_key(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    regs.ax = os_check_for_key();
-    return regs;
+    *ax = os_check_for_key();
 }
 
 char os_check_for_key()
 {
-    struct gp_registers regs;
-    regs.ax = 0x0100; /* ah = 0x01 */
-    int16h(&regs);
+    asm volatile("int $0x16" : : "a" (0x0100)); /* ah = 0x01 */
 
     if (check_zf())
     {

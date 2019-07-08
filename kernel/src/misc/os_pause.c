@@ -1,9 +1,8 @@
 #include <mikeos.h>
 
-struct gp_registers _os_pause(struct gp_registers regs)
+void _os_pause(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_pause(regs.ax);
-    return regs;
+    os_pause(*ax);
 }
 
 void os_pause(unsigned int time)
