@@ -14,5 +14,7 @@ void _os_send_via_serial(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 int os_send_via_serial(char byte)
 {
-    return 0;
+    int retval = 0;
+    asm("int $0x14" : "=a" (retval) : "a" (0x0100), "d" (0));
+    return retval;
 }
