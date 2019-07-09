@@ -8,6 +8,7 @@
 #define OS_STACK_SIZE 4096
 
 #include <stdint.h>
+#include <libc.h>
 #include <bios.h>
 
 /* return type, name and its "original" parameters */
