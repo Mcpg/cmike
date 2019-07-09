@@ -49,6 +49,6 @@ DEF_SYSCALL(void, os_print_digit, int digit)
 DEF_SYSCALL(void, os_print_1hex, char number)
 DEF_SYSCALL(void, os_print_2hex, char number)
 DEF_SYSCALL(void, os_print_4hex, int number)
-DEF_SYSCALL(void, os_input_string, char* buffer)
+DEF_SYSCALL(void, os_input_string, char* buffer, char displayed_color)
 
 #endif
