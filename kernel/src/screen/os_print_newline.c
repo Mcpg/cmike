@@ -7,5 +7,5 @@ void _os_print_newline(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 void os_print_newline(char color)
 {
-    os_print_string("\n", DEFAULT_COLOR);
+    os_print_string("\r\n", DEFAULT_COLOR);
 }
