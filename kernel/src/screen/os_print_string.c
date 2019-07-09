@@ -15,7 +15,7 @@ void os_print_string(char* string, char color)
 
     for (int i = 0; string[i]; i++)
     {
-        if (string[i] == '\r' || string[i] == '\n')
+        if (string[i] < ' ' || string[i] > '~')
         {
             asm("int $0x10" : : "a" (0x0E00 | string[i]));
             continue;
