@@ -12,6 +12,8 @@ void os_input_string(char* buffer, char color)
     int string_size = 0;
     char key;
 
+    *buffer = 0;
+
     while ((key = os_wait_for_key()) != 13)
     {
         /* Backspace */
@@ -39,6 +41,9 @@ void os_input_string(char* buffer, char color)
         }
     }
 
-    buffer++;
-    *buffer = 0;
+    if (string_size > 0)
+    {
+        buffer++;
+        *buffer = 0;
+    }
 }

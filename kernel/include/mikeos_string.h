@@ -39,6 +39,4 @@ DEF_SYSCALL(void,  os_set_date_fmt, int flag)
 DEF_SYSCALL(void,  os_get_date_string, char* dest)
 DEF_SYSCALL(int,   os_string_tokenize, char separator, char* beginning)
 
-void cmike_print_char(char c, char color);
-
 #endif

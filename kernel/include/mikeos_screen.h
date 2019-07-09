@@ -28,7 +28,7 @@
 #define SCREEN_LINE_SINGLE 0
 #define SCREEN_LINE_DOUBLE 1
 
-extern char* hex_numbers;
+extern char* digits;
 
 DEF_SYSCALL(void, os_print_string, char* string, char color)
 DEF_SYSCALL(void, os_clear_screen)
@@ -47,10 +47,13 @@ DEF_SYSCALL(void, os_input_dialog, char* message, char* buffer)
 DEF_SYSCALL(int,  os_dialog_box, char* string1, char* string2, char* string3, int mode)
 DEF_SYSCALL(void, os_print_space, char color)
 DEF_SYSCALL(void, os_dump_string, char* string)
-DEF_SYSCALL(void, os_print_digit, int digit)
+DEF_SYSCALL(void, os_print_digit, int digit, char color)
 DEF_SYSCALL(void, os_print_1hex, char number, char color)
 DEF_SYSCALL(void, os_print_2hex, char number, char color)
 DEF_SYSCALL(void, os_print_4hex, int number, char color)
 DEF_SYSCALL(void, os_input_string, char* buffer, char displayed_color)
+
+void cmike_print_char(char c, char color);
+void cmike_print_dec(int number, char color);
 
 #endif
