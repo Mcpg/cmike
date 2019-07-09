@@ -10,9 +10,17 @@ void _os_print_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 void os_print_string(char* string, char color)
 {
-    /* FIXME: implement colors in os_print_string */
+    char row1, col1;
+    char row2, col2;
+
     for (int i = 0; string[i]; i++)
     {
-        asm("int $0x10" : : "a" (0x0E00 | string[i]));
+        if (string[i] == '\r' || string[i] == '\n')
+        {
+            asm("int $0x10" : : "a" (0x0E00 | string[i]));
+            continue;
+        }
+        asm volatile("int $0x10" : : "a" (0x0900 | string[i]), "b" (0x0000 | color), "c" (1));
+        asm volatile("int $0x10" : : "a" (0x0E00 | string[i]));
     }
 }
