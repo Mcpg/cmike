@@ -12,7 +12,9 @@ void os_main(uint16_t boot_device)
     os_print_string(" * ", GRAY_COLOR);
     os_print_string("Generating a random seed... ", DEFAULT_COLOR);
     os_seed_random();
-    os_print_string("DONE\r\n", DONE_COLOR);
+    os_print_string("0x", GRAY_COLOR);
+    os_print_4hex(os_random_seed, GRAY_COLOR);
+    os_print_string(" DONE\r\n", DONE_COLOR);
 
     os_print_newline(DEFAULT_COLOR);
 
