@@ -22,5 +22,6 @@ LOCAL_SOURCES = \
 		os_print_2hex.c \
 		os_print_4hex.c \
 		os_input_string.c \
+		cmike_print_char.c
 
 LOCAL_DIRECTORIES = 
