@@ -1,3 +1,4 @@
+#include <mikeos.h>
 
 void memcpy(void* dest, const void* src, int n)
 {
