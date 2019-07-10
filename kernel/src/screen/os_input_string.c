@@ -4,10 +4,10 @@
 
 void _os_input_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_input_string((char*) *ax, DEFAULT_COLOR);
+    os_input_string((char*) *ax, DEFAULT_COLOR, STRING_LIMIT);
 }
 
-void os_input_string(char* buffer, char color)
+void os_input_string(char* buffer, char color, int max_size)
 {
     int string_size = 0;
     char key;
@@ -26,7 +26,7 @@ void os_input_string(char* buffer, char color)
             continue;
         }
 
-        if (string_size == STRING_LIMIT)
+        if (string_size == max_size)
         {
             continue;
         }

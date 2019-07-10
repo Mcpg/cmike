@@ -7,5 +7,5 @@ void _os_move_cursor(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 void os_move_cursor(char row, char column)
 {
-    asm("int $0x10" : : "a" (0x0200), "d" ((row << 8) | column));
+    asm("int $0x10" : : "a" (0x0200), "b" (0x0000), "d" ((row << 8) | column));
 }

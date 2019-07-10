@@ -1,8 +1,8 @@
 #include <mikeos.h>
 
-#define LIGHT_GRAY_COLOR COLOR_CREATE(COLOR_LIGHT_GRAY, COLOR_BLACK, 0)
-#define GRAY_COLOR       COLOR_CREATE(COLOR_DARK_GRAY, COLOR_BLACK, 0)
-#define RED_COLOR        COLOR_CREATE(COLOR_LIGHT_RED, COLOR_BLACK, 0)
+#define LIGHT_GRAY_COLOR COLOR_CREATE(COLOR_LIGHT_GRAY, COLOR_BLACK)
+#define GRAY_COLOR       COLOR_CREATE(COLOR_DARK_GRAY, COLOR_BLACK)
+#define RED_COLOR        COLOR_CREATE(COLOR_LIGHT_RED, COLOR_BLACK)
 
 struct cli_integrated_command
 {
@@ -55,7 +55,7 @@ void start_cli()
     while (1)
     {
         os_print_string("> ", GRAY_COLOR);
-        os_input_string(buffer, DEFAULT_COLOR);
+        os_input_string(buffer, DEFAULT_COLOR, 255);
         os_print_newline(DEFAULT_COLOR);
 
         if (os_string_length(buffer) == 0)

@@ -9,4 +9,7 @@ void os_clear_screen()
 {
     /* Reset the video mode */
     asm("int $0x10" : : "a" (0x0003));
+    
+    /* BIOS service: enable "bright" colors and disable blinking */
+    asm("int $0x10" : : "a" (0x1003), "b" (0x0000));
 }
