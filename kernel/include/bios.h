@@ -6,5 +6,6 @@
 #define HALT() asm volatile("cli; hlt")
 
 int check_zf();
+unsigned int bios_read_system_timer();
 
 #endif

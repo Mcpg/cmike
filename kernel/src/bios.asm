@@ -10,3 +10,16 @@ check_zf:
     .yes:
     inc ax
     ret
+
+global bios_read_system_timer
+bios_read_system_timer:
+    ; Read a word from 0000:046C
+    push es
+    
+    xor ax, ax
+    mov es, ax
+    
+    mov ax, word [es:0x046C]
+
+    pop es
+    ret
