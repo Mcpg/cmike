@@ -43,7 +43,6 @@ void os_input_string(char* buffer, char color, int max_size)
 
     if (string_size > 0)
     {
-        buffer++;
         *buffer = 0;
     }
 }
