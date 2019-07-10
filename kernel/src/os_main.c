@@ -18,6 +18,22 @@ void os_main(uint16_t boot_device)
     os_print_4hex(os_random_seed, GRAY_COLOR);
     os_print_string(" DONE\r\n", DONE_COLOR);
 
+    char buffer[10];
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("The current time is: ", DEFAULT_COLOR);
+    os_set_time_fmt(TIME_FORMAT_12HR);
+    os_get_time_string(buffer);
+    os_print_string(buffer, DONE_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("The current date is: ", DEFAULT_COLOR);
+    os_set_date_fmt(DATE_FORMAT_YMD);
+    os_get_date_string(buffer);
+    os_print_string(buffer, DONE_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+    
     os_print_newline(DEFAULT_COLOR);
 
     start_cli();
