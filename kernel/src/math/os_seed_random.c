@@ -1,6 +1,6 @@
 #include <mikeos.h>
 
-int os_random_seed = 0;
+unsigned int os_random_seed = 0;
 
 void os_seed_random()
 {
