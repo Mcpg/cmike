@@ -7,5 +7,6 @@
 
 int check_zf();
 unsigned int bios_read_system_timer();
+void* get_sp();
 
 #endif

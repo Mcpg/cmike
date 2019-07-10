@@ -23,3 +23,9 @@ bios_read_system_timer:
 
     pop es
     ret
+
+global get_sp
+get_sp:
+    mov ax, sp
+    add ax, 2 ; Remove callstack
+    ret

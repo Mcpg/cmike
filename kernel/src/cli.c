@@ -3,6 +3,7 @@
 #define LIGHT_GRAY_COLOR COLOR_CREATE(COLOR_LIGHT_GRAY, COLOR_BLACK)
 #define GRAY_COLOR       COLOR_CREATE(COLOR_DARK_GRAY, COLOR_BLACK)
 #define RED_COLOR        COLOR_CREATE(COLOR_LIGHT_RED, COLOR_BLACK)
+#define GREEN_COLOR      COLOR_CREATE(COLOR_LIGHT_GREEN, COLOR_BLACK)
 
 struct cli_integrated_command
 {
@@ -10,7 +11,7 @@ struct cli_integrated_command
     void (*callback)(char* cmd);
 };
 
-#define INTEGRATED_COMMAND_AMOUNT 2
+#define INTEGRATED_COMMAND_AMOUNT 5
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT];
 
 void version_cmd(char* cmd)
@@ -38,10 +39,62 @@ void help_cmd(char* cmd)
     os_print_newline(DEFAULT_COLOR);
 }
 
+void time_cmd(char* cmd)
+{
+    char buffer[10];
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("The current time is: ", DEFAULT_COLOR);
+    os_get_time_string(buffer);
+    os_print_string(buffer, GREEN_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+}
+
+void date_cmd(char* cmd)
+{
+    char buffer[10];
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("The current date is: ", DEFAULT_COLOR);
+    os_get_date_string(buffer);
+    os_print_string(buffer, GREEN_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+}
+
+void system_cmd(char* cmd)
+{
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("os_stack_bottom: ", DEFAULT_COLOR);
+    os_print_string("0x", LIGHT_GRAY_COLOR);
+    os_print_4hex((unsigned int) os_stack_bottom, LIGHT_GRAY_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("os_stack_top: ", DEFAULT_COLOR);
+    os_print_string("0x", LIGHT_GRAY_COLOR);
+    os_print_4hex((unsigned int) os_stack_top, LIGHT_GRAY_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("Overall stack size: ", DEFAULT_COLOR);
+    os_print_string("0x", LIGHT_GRAY_COLOR);
+    os_print_4hex((unsigned int) os_stack_top - (unsigned int) os_stack_bottom, LIGHT_GRAY_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("Stack spointer: ", DEFAULT_COLOR);
+    os_print_string("0x", LIGHT_GRAY_COLOR);
+    os_print_4hex((unsigned int) get_sp(), LIGHT_GRAY_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+}
+
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
 {
     { "help", help_cmd },
-    { "version", version_cmd }
+    { "version", version_cmd },
+    { "time", time_cmd },
+    { "date", date_cmd },
+    { "system", system_cmd }
 };
 
 void start_cli()
