@@ -6,7 +6,7 @@
 %endif
 
 %ifndef OS_STACK_SIZE
-%define OS_STACK_SIZE 4096
+%define OS_STACK_SIZE 1024
 %endif
 
 %endif
