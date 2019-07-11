@@ -41,7 +41,7 @@ void help_cmd(char* cmd)
 
 void time_cmd(char* cmd)
 {
-    char buffer[10];
+    char buffer[10] = {0};
 
     os_print_string(" * ", GRAY_COLOR);
     os_print_string("The current time is: ", DEFAULT_COLOR);
@@ -52,7 +52,7 @@ void time_cmd(char* cmd)
 
 void date_cmd(char* cmd)
 {
-    char buffer[10];
+    char buffer[10] = {0};
 
     os_print_string(" * ", GRAY_COLOR);
     os_print_string("The current date is: ", DEFAULT_COLOR);
