@@ -11,7 +11,7 @@ struct cli_integrated_command
     void (*callback)(char* cmd);
 };
 
-#define INTEGRATED_COMMAND_AMOUNT 5
+#define INTEGRATED_COMMAND_AMOUNT 6
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT];
 
 void version_cmd(char* cmd)
@@ -88,13 +88,19 @@ void system_cmd(char* cmd)
     os_print_newline(DEFAULT_COLOR);
 }
 
+void reboot_cmd(char* cmd)
+{
+    reboot();
+}
+
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
 {
     { "help", help_cmd },
     { "version", version_cmd },
     { "time", time_cmd },
     { "date", date_cmd },
-    { "system", system_cmd }
+    { "system", system_cmd },
+    { "reboot", reboot_cmd }
 };
 
 void start_cli()

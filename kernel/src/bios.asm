@@ -29,3 +29,10 @@ get_sp:
     mov ax, sp
     add ax, 2 ; Remove callstack
     ret
+
+global reboot
+reboot:
+    mov ax, 0x40
+    mov es, ax
+    mov word [es:0x72], 0x1234
+    jmp 0xFFFF:0000
