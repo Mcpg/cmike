@@ -64,11 +64,6 @@ void os_main(uint16_t boot_device)
     os_get_date_string(buffer);
     os_print_string(buffer, DONE_COLOR);
     os_print_newline(DEFAULT_COLOR);
-    
-    os_print_2hex(cmike_disk_read(kernel_disk_buffer, 0, 1), DONE_COLOR);
-    os_print_newline(DEFAULT_COLOR);
-    os_print_2hex(last_disk_error, DONE_COLOR);
-    HALT();
 
     os_print_newline(DEFAULT_COLOR);
     start_cli();
