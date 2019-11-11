@@ -11,7 +11,7 @@ struct cli_integrated_command
     void (*callback)(char* cmd);
 };
 
-#define INTEGRATED_COMMAND_AMOUNT 8
+#define INTEGRATED_COMMAND_AMOUNT 9
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT];
 
 void version_cmd(char* cmd)
@@ -110,6 +110,16 @@ void dump_boot_sector_cmd(char* cmd)
     os_print_newline(DEFAULT_COLOR);
 }
 
+void ls_cmd(char* cmd)
+{
+    /* NOTE: It's getting near to the stack limit */
+    char buffer[512] = { 0 };
+    os_get_file_list(buffer);
+    os_print_string("Root directory listing:\r\n", GRAY_COLOR);
+    os_print_string(buffer, DEFAULT_COLOR);
+    os_print_newline(DEFAULT_COLOR);
+}
+
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
 {
     { "help", help_cmd },
@@ -119,7 +129,8 @@ static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
     { "system", system_cmd },
     { "reboot", reboot_cmd },
     { "clear", clear_cmd },
-    { "dump_boot_sector", dump_boot_sector_cmd }
+    { "dump_boot_sector", dump_boot_sector_cmd },
+    { "ls", ls_cmd }
 };
 
 void start_cli()
