@@ -2,6 +2,11 @@
 
 #define DEBUG_PRINT_EXTENDED_PANIC_INFO
 
+void abort()
+{
+	panic("abort() called");
+}
+
 void panic(char* text)
 {
     os_print_string("\r\nA fatal error occurred and CMike had to shut down.\r\nYou need to restart your computer.\r\n\n", DEFAULT_COLOR);

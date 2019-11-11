@@ -47,6 +47,21 @@ struct _boot_sector
 } __attribute__((packed));
 extern struct _boot_sector boot_sector;
 
+inline int bsector_fat0_lba()
+{
+	return boot_sector.reserved_sectors;
+}
+
+inline int bsector_dentry_lba()
+{
+	return bsector_fat0_lba() + (boot_sector.fat_amount * boot_sector.sectors_per_fat);
+}
+
+inline int bsector_data_lba()
+{
+	return bsector_dentry_lba() + (boot_sector.dentry_amount * 32 / 512);
+}
+
 struct fat_time
 {
 	uint16_t hour : 5;
@@ -93,6 +108,9 @@ char cmike_disk_write(void* dst, int lba, char sector_amount);
 char cmike_disk_read(void* dst, int lba, char sector_amount);
 
 int cmike_read_boot_sector();
+
+/* If the file is not found, file_not_found_flag is set,
+   and a zeroed structure is returned. */
 struct dir_entry cmike_get_dentry(char* name);
 
 DEF_SYSCALL(void, os_get_file_list, char* dest)

@@ -32,7 +32,7 @@ void start_cli();
 #define __STR_HELPER(x) #x
 #define __STR(x) __STR_HELPER(x)
 #define ASSERT(cond) \
-	if (!cond) panic("Assert: " #cond " (" __FILE__ ":" __STR(__LINE__) ")");
+	if (!(cond)) panic("Assert: " #cond " (" __FILE__ ":" __STR(__LINE__) ")");
 
 extern void* os_stack_bottom;
 extern void* os_stack_top;

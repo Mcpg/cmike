@@ -3,6 +3,7 @@ LOCAL_SOURCES = \
 		cmike_disk_init.c \
 		cmike_disk_read.c \
 		cmike_disk_write.c \
+		cmike_get_dentry.c \
 		cmike_read_boot_sector.c \
 		os_get_file_list.c \
 		os_load_file.c \
