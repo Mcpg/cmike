@@ -11,7 +11,7 @@ struct cli_integrated_command
     void (*callback)(char* cmd);
 };
 
-#define INTEGRATED_COMMAND_AMOUNT 7
+#define INTEGRATED_COMMAND_AMOUNT 8
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT];
 
 void version_cmd(char* cmd)
@@ -98,6 +98,18 @@ void clear_cmd(char* cmd)
     os_clear_screen();
 }
 
+void dump_boot_sector_cmd(char* cmd)
+{
+    ASSERT(cmike_read_boot_sector());
+
+    os_print_string("Partial boot sector dump:\r\n", GRAY_COLOR);
+    os_print_string(" * ", GRAY_COLOR);
+    os_print_string("Volume label: ", DEFAULT_COLOR);
+    cmike_print_chars(&boot_sector.volume_label, FAT_VOLUME_LABEL_SIZE, GRAY_COLOR);
+
+    os_print_newline(DEFAULT_COLOR);
+}
+
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
 {
     { "help", help_cmd },
@@ -106,7 +118,8 @@ static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
     { "date", date_cmd },
     { "system", system_cmd },
     { "reboot", reboot_cmd },
-    { "clear", clear_cmd }
+    { "clear", clear_cmd },
+    { "dump_boot_sector", dump_boot_sector_cmd }
 };
 
 void start_cli()

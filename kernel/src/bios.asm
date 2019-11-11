@@ -48,21 +48,21 @@ bios_read_disk:
     push es
 
     ; Sectors N
-    mov ax, word [bp + 2]
+    mov ax, word [bp + 4]
 
     ; Cylinder, sector
-    mov cx, word [bp + 4]
+    mov cx, word [bp + 6]
 
     ; Head
-    mov bx, word [bp + 6]
+    mov bx, word [bp + 8]
     mov dh, bl
 
     ; Drive
-    mov bx, word [bp + 8]
+    mov bx, word [bp + 10]
     mov dl, bl
 
     ; Destination
-    mov bx, word [bp + 10]
+    mov bx, word [bp + 12]
     push ds
     pop es
 

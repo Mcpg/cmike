@@ -24,4 +24,6 @@ void cmike_disk_init(char bootdev)
         sectors_per_track &= 0x3F;
         disk_heads = (disk_heads >> 8) + 1;
     }
+
+    ASSERT(cmike_read_boot_sector());
 }
