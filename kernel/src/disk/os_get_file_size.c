@@ -17,5 +17,6 @@ void _os_get_file_size(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 unsigned int os_get_file_size(char* path)
 {
-    return 0;
+    uint32_t file_size = cmike_get_dentry(path).file_size;
+    return file_size > 0xFFFF ? 0xFFFF : file_size;
 }
