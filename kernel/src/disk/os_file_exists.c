@@ -14,5 +14,6 @@ void _os_file_exists(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 int os_file_exists(char* path)
 {
-    return 0;
+	cmike_get_dentry(path);
+    return file_not_found_flag == 0;
 }
