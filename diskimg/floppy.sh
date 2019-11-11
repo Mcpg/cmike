@@ -25,6 +25,7 @@ umount $TMPDIR || exit 1
 rm -rf $TMPDIR
 
 cp $TMPIMG $FLOPPY_IMG_PATH
+chmod 666 $FLOPPY_IMG_PATH
 
 echo " >>> Done."
 
