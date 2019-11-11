@@ -5,6 +5,6 @@
 #include <stdarg.h>
 #include <stdint.h>
 
-void memcpy(void* dest, const void* src, int n);
+void* memcpy(void* dest, const void* src, int n);
 
 #endif

@@ -1,9 +1,10 @@
 #include <mikeos.h>
 
-void memcpy(void* dest, const void* src, int n)
+void* memcpy(void* dest, const void* src, int n)
 {
     for (; n > 0; n--)
     {
         ((char*) dest)[n] = ((char*) src)[n];
     }
+    return dest;
 }
