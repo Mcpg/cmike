@@ -36,3 +36,43 @@ reboot:
     mov es, ax
     mov word [es:0x72], 0x1234
     jmp 0xFFFF:0000
+
+global bios_read_disk
+bios_read_disk:
+    push bp
+    mov bp, sp
+
+    push bx
+    push cx
+    push dx
+    push es
+
+    ; Sectors N
+    mov ax, word [bp + 2]
+
+    ; Cylinder, sector
+    mov cx, word [bp + 4]
+
+    ; Head
+    mov bx, word [bp + 6]
+    mov dh, bl
+
+    ; Drive
+    mov bx, word [bp + 8]
+    mov dl, bl
+
+    ; Destination
+    mov bx, word [bp + 10]
+    push ds
+    pop es
+
+    mov ah, 0x02
+    int 0x13
+
+    pop es
+    pop dx
+    pop cx
+    pop bx
+
+    pop bp
+    ret

@@ -8,14 +8,11 @@ char cmike_disk_read(void* dst, int lba, char sector_amount)
     head = (lba / sectors_per_track) % disk_heads;
     cylinder = (lba / sectors_per_track) / disk_heads;
 
-    int result;
-    /* FIXME: make the es setting code better and less dependant on the OS segment default value of 0x2000 */
-    asm("push %%es; push %%ax; mov $0x2000, %%ax; mov %%ax, %%es; pop %%ax; int $0x13; pop %%es; cli;hlt"
-        : "=a" (result)
-        : "a" (0x0200 | (sector_amount & 0xFF)),
-          "b" ((unsigned int) dst),
-          "c" (((cylinder & 0xFF) << 8) | ((cylinder >> 2) & 0xC0) | (sector & 0x3F)),
-          "d" (((head & 0xFF) << 8) | (boot_device & 0xFF))
+    int result = bios_read_disk(
+        sector_amount,
+        (uint16_t) ((cylinder << 8) | (sector & 0xFF) | ((cylinder >> 2) & 0xC0)),
+        head, boot_device,
+        dst
     );
 
     last_disk_error = (result >> 8) & 0xFF;

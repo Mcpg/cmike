@@ -9,6 +9,7 @@ extern int disk_heads;
 
 extern char file_not_found_flag;
 
+/* Last disk error returned by int 0x13 functions */
 extern char last_disk_error;
 
 void cmike_disk_init(char bootdev);
