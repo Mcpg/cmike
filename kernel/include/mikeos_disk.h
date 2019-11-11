@@ -119,13 +119,14 @@ int cmike_read_boot_sector();
 
 /* Returns length of generated string */
 int cmike_fat_to_path(char* destination, struct dir_entry* dentry);
+uint16_t cmike_get_cluster_value(uint16_t fat_index);
 
 /* If the file is not found, file_not_found_flag is set,
    and a zeroed structure is returned. */
 struct dir_entry cmike_get_dentry(char* name);
 
 DEF_SYSCALL(void, os_get_file_list, char* dest)
-DEF_SYSCALL(unsigned int, os_load_file, char* dest, void* buffer)
+DEF_SYSCALL(unsigned int, os_load_file, char* dest, uint8_t* buffer)
 DEF_SYSCALL(int, os_write_file, char* filename, void* buffer, unsigned int size)
 DEF_SYSCALL(int, os_file_exists, char* path)
 DEF_SYSCALL(void, os_create_file, char* path)

@@ -12,7 +12,7 @@ LD = ia16-elf-ld
 CFLAGS = -nostdlib -ffreestanding \
 			-mno-callee-assume-ds-data-segment \
 			-Wall -Wextra -O2 -std=gnu99 \
-			-Wno-unused-parameter
+			-Wno-unused-parameter -funsigned-char
 ASFLAGS = -f elf
 LDFLAGS =
 LDLIBS = -L$(dir $(shell $(CC) --print-libgcc-file-name)) -lgcc
