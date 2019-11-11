@@ -6,5 +6,6 @@
 #include <stdint.h>
 
 void* memcpy(void* dest, const void* src, int n);
+void* memset(void* dest, int val, size_t n);
 
 #endif
