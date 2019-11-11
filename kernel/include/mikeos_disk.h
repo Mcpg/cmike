@@ -103,11 +103,22 @@ struct dir_entry
 	uint32_t file_size;
 } __attribute__((packed));
 
+/* 512 B */
+extern struct dir_entry dentry_sector[16];
+
+inline int is_valid_filename(char* filename)
+{
+	return *filename != 0x0 && *filename != 0x05 && *filename != 0x2E && *filename != 0xE5;
+}
+
 void cmike_disk_init(char bootdev);
 char cmike_disk_write(void* dst, int lba, char sector_amount);
 char cmike_disk_read(void* dst, int lba, char sector_amount);
 
 int cmike_read_boot_sector();
+
+/* Returns length of generated string */
+int cmike_fat_to_path(char* destination, struct dir_entry* dentry);
 
 /* If the file is not found, file_not_found_flag is set,
    and a zeroed structure is returned. */
