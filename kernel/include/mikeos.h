@@ -7,7 +7,6 @@
 #define OS_SEGMENT 0x2000
 #define OS_STACK_SIZE 1024
 
-#include <stdint.h>
 #include <libc.h>
 #include <bios.h>
 
@@ -33,7 +32,7 @@ void start_cli();
 extern void* os_stack_bottom;
 extern void* os_stack_top;
 
-extern void* kernel_disk_buffer;
-extern void* program_space;
+extern void* _program_space;
+#define program_space ((uint8_t*)(&_program_space))
 
 #endif

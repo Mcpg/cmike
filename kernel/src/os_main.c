@@ -11,11 +11,6 @@ void os_main(uint16_t boot_device)
     os_print_string("Welcome to CMike!\r\n", WELCOME_COLOR);
     os_print_horiz_line(SCREEN_LINE_DOUBLE, WELCOME_COLOR);
 
-    /* HACK: Manually set values to the fields that should be set by the linker.
-       There might be a problem with the build system, or the ia16-elf toolchain itself. */
-    kernel_disk_buffer = 0x6000;
-    program_space = 0x8000;
-
     /* * Generating a random seed... 0xSEED DONE */
     os_print_string(" * ", GRAY_COLOR);
     os_print_string("Generating a random seed... ", DEFAULT_COLOR);
