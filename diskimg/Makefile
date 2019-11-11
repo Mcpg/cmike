@@ -12,4 +12,4 @@ clean:
 	$(RM) $(FLOPPY_IMG_PATH)
 
 floppy:
-	@./floppy.sh
+	sudo @./floppy.sh
