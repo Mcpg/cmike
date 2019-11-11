@@ -7,11 +7,14 @@ include config.mk
 
 export
 
-.PHONY: all clean $(BUILD_MODULES)
+.PHONY: all clean run $(BUILD_MODULES)
 
 all: $(AUTO_MODULES)
 
 clean: $(addsuffix _clean,$(BUILD_MODULES))
+
+run:
+	qemu-system-i386 -fda diskimg/cmike.flp
 
 #######################################
 
