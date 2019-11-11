@@ -9,7 +9,7 @@ clean:
 
 $(RESULT_FILE): $(LINKER_SCRIPT) $(OBJECTS)
 	-@$(MKDIR) $(dir $@)
-	$(LD) $(LDFLAGS) -o $@ -T $^
+	$(LD) $(LDFLAGS) -o $@ -T $^ $(LDLIBS)
 
 $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	-@$(MKDIR) $(dir $@)

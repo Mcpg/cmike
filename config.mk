@@ -15,6 +15,7 @@ CFLAGS = -nostdlib -ffreestanding \
 			-Wno-unused-parameter
 ASFLAGS = -f elf
 LDFLAGS =
+LDLIBS = -L$(dir $(shell $(CC) --print-libgcc-file-name)) -lgcc
 
 DISK_ROOT_DIRECTORY = $(PROJECT_ROOT_DIR)/diskroot
 
