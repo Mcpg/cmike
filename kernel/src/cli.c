@@ -166,6 +166,12 @@ void start_cli()
 
         if (!cmd_found)
         {
+            if (os_file_exists(buffer))
+            {
+                cmike_run_program(buffer);
+                continue;
+            }
+
             os_print_string("Command not found.\r\n", RED_COLOR);
             continue;
         }

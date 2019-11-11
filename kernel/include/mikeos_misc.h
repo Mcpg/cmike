@@ -3,6 +3,8 @@
 
 #include <mikeos.h>
 
+void cmike_run_program(char* path);
+
 DEF_SYSCALL(char, os_get_api_version)
 DEF_SYSCALL(void, os_pause, unsigned int time)
 DEF_SYSCALL(void, os_fatal_error, char* text)
