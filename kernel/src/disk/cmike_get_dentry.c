@@ -30,7 +30,8 @@ static int compare_name_fat_internal(char* name, struct dir_entry* internal)
 	}
 
 	memcpy(converted_string, name, filename_size);
-	memcpy(converted_string + 8, extension_string, extension_size);
+	if (extension_string)
+		memcpy(converted_string + 8, extension_string, extension_size);
 	os_string_uppercase(converted_string);
 
 	return memcmp(converted_string, internal->filename, 11) == 0;
