@@ -58,5 +58,6 @@ DEF_SYSCALL(void, os_input_string, char* buffer, char displayed_color, int max_s
 
 void cmike_print_char(char c, char color);
 void cmike_print_dec(int number, char color);
+void cmike_print_chars(char* c, int n, char color);
 
 #endif
