@@ -2,9 +2,6 @@
 
 /*#define OS_PRINT_STRING_DEBUG*/
 
-#define SCREEN_WIDTH  80
-#define SCREEN_HEIGHT 25
-
 void _os_print_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
     os_print_string((char*) *si, 0x00);
