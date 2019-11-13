@@ -1,5 +1,7 @@
 #include <mikeos.h>
 
+/*#define OS_PRINT_STRING_DEBUG*/
+
 #define SCREEN_WIDTH  80
 #define SCREEN_HEIGHT 25
 
@@ -10,6 +12,10 @@ void _os_print_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 
 void os_print_string(char* string, char color)
 {
+#ifdef OS_PRINT_STRING_DEBUG
+    asm volatile("int $0x16" : : "a" (0));
+#endif
+
     for (int i = 0; string[i]; i++)
     {
         /* Check if the character is printable */

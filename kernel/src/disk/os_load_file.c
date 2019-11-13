@@ -25,6 +25,11 @@ unsigned int os_load_file(char* path, uint8_t* dest)
     current_cluster = dentry.first_cluster;
     while (current_cluster < 0xFF7)
     {
+        
+        //os_print_string("\r\n---- reading cluster: ", DEFAULT_COLOR);
+        //os_print_4hex(current_cluster, DEFAULT_COLOR);
+        //asm("int $0x16" : : "a" (0));
+
         ASSERT(cmike_disk_read(
             dest,
             current_cluster + bsector_data_lba() - 2,

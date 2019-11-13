@@ -38,6 +38,7 @@ extern void* os_stack_bottom;
 extern void* os_stack_top;
 
 extern void* _program_space;
-#define program_space ((uint8_t*)(&_program_space))
+//#define program_space ((uint8_t*)(&_program_space))
+#define program_space ((uint8_t*)0x8000)
 
 #endif
