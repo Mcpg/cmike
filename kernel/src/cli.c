@@ -197,6 +197,7 @@ void start_cli()
     while (1)
     {
         os_print_string("> ", GRAY_COLOR);
+        memset(buffer, 0, 256);
         os_input_string(buffer, DEFAULT_COLOR, 255);
         os_print_newline(DEFAULT_COLOR);
 
