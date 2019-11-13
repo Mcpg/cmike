@@ -13,8 +13,10 @@ static int compare_name_fat_internal(char* name, struct dir_entry* internal)
 	memset(converted_string, ' ', 11);
 	converted_string[11] = 0;
 
-	ASSERT(os_string_length(name) <= 12);
-	ASSERT(os_string_length(name) != 0);
+	/*ASSERT(os_string_length(name) <= 12);*/
+	/*ASSERT(os_string_length(name) != 0);*/
+	if (os_string_length(name) > 12 || os_string_length(name) == 0)
+		return 0;
 
 	filename_size = os_find_char_in_string(name, '.');
 	if (filename_size == 0)
