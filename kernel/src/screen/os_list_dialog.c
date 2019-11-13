@@ -36,7 +36,7 @@ static void render_list(char* strings, int arrsize, int offset, int on_screen_pi
         LIST_BACKGROUND,
         LIST_X, LIST_Y,
         LIST_WIDTH,
-        21
+        22
     );
 
     for (int i = 0; i < offset; i++)
@@ -57,7 +57,7 @@ static void render_list(char* strings, int arrsize, int offset, int on_screen_pi
             os_draw_block(
                 LIST_SELECTED_COLOR,
                 LIST_X + 1, LIST_Y + i + 1,
-                LIST_WIDTH - 2, LIST_Y + i + 1
+                LIST_WIDTH - 2, LIST_Y + i + 2
             );
             color = LIST_SELECTED_COLOR;
         }
@@ -88,7 +88,7 @@ int os_list_dialog(char* strings, char* help1, char* help2)
         DIALOG_X,
         DIALOG_Y,
         DIALOG_WIDTH,
-        22
+        23
     );
 
     if (help1 != NULL)

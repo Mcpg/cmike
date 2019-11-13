@@ -76,7 +76,7 @@ int os_dialog_box(char* string1, char* string2, char* string3, int mode)
 {
     int retval = 0;
 
-    os_draw_block(DIALOG_COLOR, DIALOG_X, DIALOG_Y, DIALOG_WIDTH, DIALOG_Y + 7);
+    os_draw_block(DIALOG_COLOR, DIALOG_X, DIALOG_Y, DIALOG_WIDTH, DIALOG_Y + 8);
     if (string1 != NULL && os_string_length(string1) <= DIALOG_STRMAX)
     {
         os_move_cursor(DIALOG_Y + 1, DIALOG_X + 1);

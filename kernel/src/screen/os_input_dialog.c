@@ -28,14 +28,14 @@ void os_input_dialog(char* message, char* target)
         INPUT_DIALOG_X,
         INPUT_DIALOG_Y,
         INPUT_DIALOG_WIDTH,
-        INPUT_DIALOG_Y + INPUT_DIALOG_HEIGHT
+        INPUT_DIALOG_Y + INPUT_DIALOG_HEIGHT + 1
     );
     os_draw_block(
         INPUT_DIALOG_INPUT_COLOR,
         INPUT_DIALOG_INPUT_X,
         INPUT_DIALOG_INPUT_Y,
         INPUT_DIALOG_MAX_STRING,
-        INPUT_DIALOG_INPUT_Y
+        INPUT_DIALOG_INPUT_Y + 1
     );
 
     os_move_cursor(INPUT_DIALOG_TEXT_Y, INPUT_DIALOG_TEXT_X);
