@@ -4,3 +4,5 @@ diskroot/
 *.bin
 *.BIN
 *.flp
+*.dmp
+programs/
