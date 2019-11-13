@@ -7,6 +7,9 @@
 void os_main(uint16_t boot_device)
 {   
     os_clear_screen();
+    
+    /* BIOS service: enable "bright" colors and disable blinking */
+    asm("int $0x10" : : "a" (0x1003), "b" (0x0000));
 
     os_print_string("Welcome to CMike!\r\n", WELCOME_COLOR);
     os_print_horiz_line(SCREEN_LINE_DOUBLE, WELCOME_COLOR);
