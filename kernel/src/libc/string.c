@@ -12,7 +12,7 @@ void* memcpy(void* dest, const void* src, int n)
 
 void* memset(void* dest, int val, size_t n)
 {
-	int i;
+	unsigned int i;
 	for (i = 0; i < n; i++)
 	{
 		((char*) dest)[i] = val;

@@ -13,11 +13,11 @@ void _os_string_tokenize(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
  */
 char* os_string_tokenize(char separator, char* string)
 {
-	while (*string != NULL)
+	while (*string != 0)
 	{
 		if (*string == separator)
 		{
-			*string = NULL;
+			*string = 0;
 			return string + 1;
 		}
 		string++;

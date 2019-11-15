@@ -22,7 +22,7 @@ void os_get_file_list(char* dest)
 
 		for (di = 0; di < 16; di++)
 		{
-			if (dentry_sector[di].attributes & FILE_LFN == FILE_LFN)
+			if ((dentry_sector[di].attributes & FILE_LFN) == FILE_LFN)
 				continue;
 
 			if (is_valid_filename(dentry_sector[di].filename))

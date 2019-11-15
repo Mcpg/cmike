@@ -4,12 +4,16 @@ static inline char base_convert_i2ch(int base, int digit)
 {
     if (digit > 9)
         return digit + '0' + 7;
+    else
+        return digit + '0';
 }
 
 static inline int base_convert_ch2i(int base, char digit)
 {
     if (digit > '9')
         return digit - '0' - 7;
+    else
+        return digit - '0';
 }
 
 void _os_long_int_to_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
@@ -22,7 +26,7 @@ void os_long_int_to_string(int hi, int lo, int base, char* destination)
     if (base <= 1 || base > 36)
         return;
     
-    unsigned long number = (hi << 16) | lo;
+    unsigned long number = ((uint32_t) hi << 16) | lo;
     int i;
     for (i = 0; i < 32; i++)
     {

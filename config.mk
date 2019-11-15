@@ -11,7 +11,7 @@ LD = ia16-elf-ld
 # unused parameters - that's an expected behavior.
 CFLAGS = -nostdlib -ffreestanding \
 			-mno-callee-assume-ds-data-segment \
-			-Wall -Wextra -O2 -std=gnu99 \
+			-Wall -Wextra -Werror -O2 -std=gnu99 \
 			-Wno-unused-parameter -funsigned-char
 ASFLAGS = -f elf
 LDFLAGS =

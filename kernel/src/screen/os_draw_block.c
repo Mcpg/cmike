@@ -16,6 +16,6 @@ void os_draw_block(char color, char start_x, char start_y, char width, char end_
     for (int y = start_y; y < end_y; y++)
     {
         os_move_cursor(y, start_x);
-        asm("int $0x10" : : "a" (0x0900 | ' '), "b" (0x0000 | color & 0x00FF), "c" (width & 0x00FF));
+        asm("int $0x10" : : "a" (0x0900 | ' '), "b" (color & 0x00FF), "c" (width & 0x00FF));
     }
 }

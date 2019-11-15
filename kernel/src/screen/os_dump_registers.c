@@ -2,7 +2,7 @@
 
 void _os_dump_registers(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    os_dump_registers(*ax, *bx, *cx, *dx, *si, *di, DEFAULT_COLOR);
+    os_dump_registers(ax, bx, cx, dx, si, di, DEFAULT_COLOR);
 }
 
 void os_dump_registers(int* ax, int* bx, int* cx, int* dx, int* si, int* di, char color)

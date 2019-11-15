@@ -78,7 +78,7 @@ void dump_boot_sector_cmd(char* cmd)
     os_print_string("Partial boot sector dump:\r\n", GRAY_COLOR);
     os_print_string(" * ", GRAY_COLOR);
     os_print_string("Volume label: ", DEFAULT_COLOR);
-    cmike_print_chars(&boot_sector.volume_label, FAT_VOLUME_LABEL_SIZE, GRAY_COLOR);
+    cmike_print_chars(&boot_sector.volume_label[0], FAT_VOLUME_LABEL_SIZE, GRAY_COLOR);
 
     os_print_newline(DEFAULT_COLOR);
 }
