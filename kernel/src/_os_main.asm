@@ -22,10 +22,12 @@ section .text
         extern os_main
         push dx
         mov ax, os_main 
-        jmp ax
+        call ax
 
-        cli
-        hlt
+        .dead_loop:
+            cli
+            hlt
+            jmp .dead_loop
 
 section .bss
 
