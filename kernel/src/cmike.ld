@@ -12,6 +12,7 @@ SECTIONS
         *(.data)
         *(.bss)
     }
+    . = 0x6000;
     . = 0x8000;
     _program_space = .;
     . = 0x10000;
