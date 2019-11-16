@@ -4,6 +4,7 @@
 CC = ia16-elf-gcc
 AS = nasm
 LD = ia16-elf-ld
+AR = ia16-elf-ar
 
 # Note:
 # The flags disable unused-parameter warning,
@@ -16,6 +17,7 @@ CFLAGS = -nostdlib -ffreestanding \
 ASFLAGS = -f elf
 LDFLAGS =
 LDLIBS = -L$(dir $(shell $(CC) --print-libgcc-file-name)) -lgcc
+ARFLAGS =
 
 DISK_ROOT_DIRECTORY = $(PROJECT_ROOT_DIR)/diskroot
 

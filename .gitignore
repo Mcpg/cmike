@@ -6,3 +6,4 @@ diskroot/
 *.flp
 *.dmp
 programs/
+*.a
