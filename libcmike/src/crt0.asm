@@ -1,22 +1,22 @@
 
 section .cmike_init
 
-	global _start
-	_start:
+    global _start
+    _start:
 
-		mov word [old_stack], sp
-		mov sp, stack_top
+        mov word [old_stack], sp
+        mov sp, stack_top
 
-		extern main
-		call main
+        extern main
+        call main
 
-		mov sp, word [old_stack]
+        mov sp, word [old_stack]
 
-		ret
+        ret
 
-	old_stack: dw 0
+    old_stack: dw 0
 
 section .bss
-	
-	resb 3072
-	stack_top:
+    
+    resb 3072
+    stack_top:

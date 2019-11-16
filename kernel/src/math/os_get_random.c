@@ -18,5 +18,5 @@ unsigned int os_get_random(unsigned int low, unsigned int high)
     }
 
     os_random_seed = os_random_seed * 11045 + 12345;
-	return (os_random_seed % (high - low + 1)) + low; 
+    return (os_random_seed % (high - low + 1)) + low; 
 }

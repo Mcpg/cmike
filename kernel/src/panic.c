@@ -4,7 +4,7 @@
 
 void abort()
 {
-	panic("abort() called");
+    panic("abort() called");
 }
 
 void panic(char* text)
