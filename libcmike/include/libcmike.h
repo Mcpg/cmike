@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stddef.h>
 
 /* Jump table addresses */
 #define OS_PRINT_STRING_ADDR 0x0003
@@ -80,15 +81,57 @@
 
 typedef struct
 {
-    uint16_t ax;
-    uint16_t bx;
-    uint16_t cx;
-    uint16_t dx;
+    union
+    {
+        struct
+        {
+            uint8_t al;
+            uint8_t ah;
+        };
+        uint16_t ax;
+    };
+
+    union
+    {
+        struct
+        {
+            uint8_t bl;
+            uint8_t bh;
+        };
+        uint16_t bx;
+    };
+
+    union
+    {
+        struct
+        {
+            uint8_t cl;
+            uint8_t ch;
+        };
+        uint16_t cx;
+    };
+
+    union
+    {
+        struct
+        {
+            uint8_t dl;
+            uint8_t dh;
+        };
+        uint16_t dx;
+    };
+
     uint16_t si;
     uint16_t di;
 } __attribute__ ((packed)) syscall_regs;
 
 void cmike_syscall(uint16_t addr, syscall_regs*);
+
+/* Utility method for nicer syscall syntax (for void funcs) */
+void cmike_syscall_nr(uint16_t addr, syscall_regs);
+
+#define cmike_syscall_ns(addr) \
+    cmike_syscall_nr((uint16_t) (addr), (syscall_regs) {})
 
 /* Status flags */
 
@@ -184,7 +227,7 @@ void os_get_cursor_pos(uint8_t* target_y, uint8_t* target_x);
 void os_print_horiz_line(uint8_t line_type);
 void os_show_cursor();
 void os_hide_cursor();
-void os_draw_block(uint8_t color, uint8_t sx, uint8_t sy, uint8_t width, uint8_t end_y);
+void os_draw_block(uint8_t color, uint8_t sx, uint8_t sy, uint16_t width, uint16_t end_y);
 char* os_file_selector();
 uint16_t os_list_dialog(char* option_list, char* help1, char* help2);
 void os_draw_background(char* top, char* bottom, uint8_t middle_color);
@@ -242,5 +285,9 @@ void os_speaker_off();
 
 /* BASIC functions */
 void os_run_basic(char* code, uint16_t size);
+
+/* Implemented libc functions */
+void* memcpy(void* dest, void* src, uint16_t n);
+void* memset(void* dest, int val, uint16_t n);
 
 #endif
