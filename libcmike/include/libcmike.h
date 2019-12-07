@@ -164,7 +164,7 @@ uint16_t os_get_file_size(char* filename);
 
 /* Keyboard functions */
 char os_wait_for_key();
-bool os_check_for_key();
+char os_check_for_key();
 
 /* Math functions */
 uint16_t os_bcd_to_int(uint8_t bcd);
