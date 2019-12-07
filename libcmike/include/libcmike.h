@@ -78,7 +78,24 @@
 #define __CALL_STRING(addr) "call " #addr
 #define __ASM_LBREAK "\r\n"
 
+typedef struct
+{
+    uint16_t ax;
+    uint16_t bx;
+    uint16_t cx;
+    uint16_t dx;
+    uint16_t si;
+    uint16_t di;
+} __attribute__ ((packed)) syscall_regs;
+
+void cmike_syscall(uint16_t addr, syscall_regs*);
+
 /* Status flags */
+
+/*
+ * Changed by cmike_syscall
+ */
+extern bool last_carry_flag;
 
 /*
  * Changed by:

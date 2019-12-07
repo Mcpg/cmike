@@ -1,4 +1,7 @@
 
+    bits 16
+    cpu 386
+
 section .cmike_init
 
     global _start

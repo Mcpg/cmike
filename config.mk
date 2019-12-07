@@ -21,5 +21,6 @@ ARFLAGS =
 
 DISK_ROOT_DIRECTORY = $(PROJECT_ROOT_DIR)/diskroot
 
+CP = cp -R
 RM = rm -f
 MKDIR = mkdir -p

@@ -5,5 +5,4 @@ diskroot/
 *.BIN
 *.flp
 *.dmp
-programs/
 *.a
