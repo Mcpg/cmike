@@ -79,6 +79,10 @@
 #define __CALL_STRING(addr) "call " #addr
 #define __ASM_LBREAK "\r\n"
 
+/* cmikeprog.ld defined symbol */
+extern void* _free_space;
+#define free_space ((void*) &_free_space)
+
 typedef struct
 {
     union
@@ -163,6 +167,14 @@ bool os_rename_file(char* filename, char* new_name);
 uint16_t os_get_file_size(char* filename);
 
 /* Keyboard functions */
+
+#define KEY_UP     72
+#define KEY_DOWN   80
+#define KEY_LEFT   75
+#define KEY_RIGHT  77
+#define KEY_ESCAPE 27
+#define KEY_ENTER  13
+
 char os_wait_for_key();
 char os_check_for_key();
 

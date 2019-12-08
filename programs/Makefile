@@ -19,7 +19,7 @@ clean:
 	$(RM) $(PROGRAMS)
 
 copy_to_disk: $(PROGRAMS)
-	$(foreach prg,$(PROGRAMS),$(CP) $(prg) $(DISK_ROOT_DIRECTORY))
+	$(foreach prg,$(PROGRAMS),$(CP) $(prg) $(DISK_ROOT_DIRECTORY);)
 
 $(BIN_DIR)/%.bin: %.c
 	-@$(MKDIR) $(dir $@)

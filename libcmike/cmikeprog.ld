@@ -16,4 +16,6 @@ SECTIONS
         *(.bss)
         *(COMMON)
     }
+
+    _free_space = .;
 }
