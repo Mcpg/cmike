@@ -267,15 +267,15 @@ void os_string_join(char* s1, char* s2, char* target);
 void os_string_chomp(char* string);
 void os_string_strip(char* string, char ch);
 bool os_string_compare(char* s1, char* s2);
-bool os_string_strincmp(char* s1, char* s2, uint16_t n);
+bool os_string_strincmp(char* s1, char* s2, uint8_t n);
 void os_string_parse(char* string, char** s1, char** s2, char** s3, char** s4);
 uint16_t os_string_to_int(char* string);
 char* os_int_to_string(uint16_t num);
 char* os_sint_to_string(int16_t num);
-void os_long_int_to_string(uint32_t num, uint16_t base, char* target);
+char* os_long_int_to_string(uint32_t num, uint16_t base, char* target);
 void os_set_time_fmt(uint8_t fmt);
 void os_get_time_string(char* target);
-void os_set_date_fmt(uint8_t fmt);
+void os_set_date_fmt(uint16_t fmt);
 void os_get_date_string(char* target);
 char* os_string_tokenize(char separator, char* beginning);
 
