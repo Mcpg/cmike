@@ -18,7 +18,7 @@ mkdir $TMPDIR || exit 1
 echo " >>> Mounting the image..."
 mount -o loop -t vfat $TMPIMG $TMPDIR || exit 1
 echo " >>> Copying the files..."
-cp $DISK_ROOT_DIRECTORY/** $TMPDIR || exit 1
+cp -R $DISK_ROOT_DIRECTORY/** $TMPDIR || exit 1
 
 echo " >>> Unmounting the image..."
 umount $TMPDIR || exit 1
