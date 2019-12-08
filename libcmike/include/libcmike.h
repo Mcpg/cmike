@@ -80,8 +80,8 @@
 #define __ASM_LBREAK "\r\n"
 
 /* cmikeprog.ld defined symbol */
-extern void* _free_space;
-#define free_space ((void*) &_free_space)
+extern void* _free_space_start;
+#define free_space_start ((void*) &_free_space_start)
 
 typedef struct
 {

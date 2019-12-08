@@ -17,5 +17,5 @@ SECTIONS
         *(COMMON)
     }
 
-    _free_space = .;
+    _free_space_start = .;
 }
