@@ -9,6 +9,8 @@
         global _asm_%1:function (_asm_%1.end - _asm_%1)
         _asm_%1:
 
+            push es
+
             mov word [saved_ax], ax
             mov word [saved_bx], bx
             mov word [saved_cx], cx
@@ -40,6 +42,8 @@
             mov dx, word [saved_dx]
             mov si, word [saved_si]
             mov di, word [saved_di]
+
+            pop es
 
             ret
             
