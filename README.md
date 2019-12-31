@@ -17,6 +17,7 @@ following targets:
  * `make kernel` - the kernel, obviously
  * `make libcmike` - front end library for MikeOS/CMike C programs
  * `make programs` - CMike software
+ * `make diskimg` - build the floppy disk image (diskimg/cmike.flp)
  * `make run` - runs QEMU with diskimg/cmike.flp in floppy drive A:
    and PC speaker enabled
 
