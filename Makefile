@@ -14,7 +14,7 @@ all: $(AUTO_MODULES)
 clean: $(addsuffix _clean,$(BUILD_MODULES))
 
 run:
-	qemu-system-i386 -fda diskimg/cmike.flp -soundhw pcspk
+	qemu-system-i386 -soundhw pcspk -drive format=raw,file=diskimg/cmike.flp,index=0,if=floppy
 
 #######################################
 
