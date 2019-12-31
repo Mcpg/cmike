@@ -21,7 +21,7 @@ char* os_file_selector()
     char buffer[1024] = { 0 };
     os_get_file_list(buffer);
 
-    int option = os_list_dialog(buffer, "Pick a file, or press [Esc] key", "_");
+    int option = os_list_dialog(buffer, "Pick a file, or press [Esc] key", "");
 
     if (option == 0)
         return NULL;
