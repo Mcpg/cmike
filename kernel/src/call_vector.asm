@@ -26,7 +26,13 @@
             extern _%1
             call _%1
 
+            pushf
+            pop word [.temp_flags]
+
             add sp, 12
+
+            push word [.temp_flags]
+            popf
 
             mov ax, word [saved_ax]
             mov bx, word [saved_bx]
@@ -36,7 +42,11 @@
             mov di, word [saved_di]
 
             ret
+            
+            .temp_flags: dw 0
+
             .end:
+
     
     section .call_vector
         jmp _asm_%1
