@@ -13,6 +13,9 @@ section .text
         cli
         mov ax, OS_SEGMENT
         mov ds, ax
+        mov es, ax
+        mov fs, ax
+        mov gs, ax
         mov ss, ax
         mov sp, os_stack_top
         jmp OS_SEGMENT:.cont
