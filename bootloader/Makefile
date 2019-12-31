@@ -1,7 +1,6 @@
 
 include ../config.mk
 
-AS = nasm
 ASFLAGS = -f BIN
 
 SOURCE = bootloader.asm

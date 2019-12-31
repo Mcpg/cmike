@@ -1,3 +1,4 @@
+
 SRC_DIR = src
 BIN_DIR = bin
 INCLUDE_DIR = include
