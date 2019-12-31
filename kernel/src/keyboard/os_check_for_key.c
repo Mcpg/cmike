@@ -2,7 +2,7 @@
 
 void _os_check_for_key(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    *ax = os_check_for_key();
+    *ax = os_check_for_key() | (((uint16_t) last_scancode) << 8);
 }
 
 char os_check_for_key()

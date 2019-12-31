@@ -19,13 +19,21 @@ void _os_int_to_string(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 char* os_int_to_string(unsigned int number)
 {
     static char buffer[6] = {0, 0, 0, 0, 0, 0};
-    for (int i = 0; i < 5; i++)
+    int i;
+
+    for (i = 0; i < 5; i++)
     {
         buffer[i] = (number % 10) + '0';
         number /= 10;
         if (number == 0)
+        {
+            i++;
             break;
+        }
     }
-    os_string_reverse(&buffer[0]);
-    return &buffer[0];
+
+    buffer[i] = 0;
+    os_string_reverse(buffer);
+
+    return buffer;
 }

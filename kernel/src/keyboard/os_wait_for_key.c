@@ -2,7 +2,8 @@
 
 void _os_wait_for_key(int* ax, int* bx, int* cx, int* dx, int* si, int* di)
 {
-    *ax = os_wait_for_key();
+    /* MikeOS returns the ASCII character in al and the scancode in ah */
+    *ax = os_wait_for_key() | (((uint16_t) last_scancode) << 8);
 }
 
 char last_scancode = 0;
