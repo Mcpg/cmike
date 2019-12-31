@@ -1,7 +1,7 @@
 
 PROJECT_ROOT_DIR = $(shell pwd)
-BUILD_MODULES ?= bootloader kernel libcmike diskimg programs
-AUTO_MODULES ?= bootloader kernel libcmike diskimg programs
+BUILD_MODULES ?= bootloader kernel libcmike programs diskimg
+AUTO_MODULES ?= bootloader kernel libcmike programs diskimg
 
 include config.mk
 
