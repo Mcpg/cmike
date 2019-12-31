@@ -1,6 +1,8 @@
 
 # Global configuration for CMike
 
+VERSION = 0.1.0
+
 CC = ia16-elf-gcc
 AS = nasm
 LD = $(CC)

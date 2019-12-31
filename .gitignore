@@ -6,3 +6,5 @@ diskroot/
 *.flp
 *.dmp
 *.a
+cmike-*/
+cmike-*.tar.gz

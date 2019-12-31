@@ -7,7 +7,7 @@ include config.mk
 
 export
 
-.PHONY: all clean run $(BUILD_MODULES)
+.PHONY: all clean run dist $(BUILD_MODULES)
 
 all: $(AUTO_MODULES)
 
@@ -15,6 +15,22 @@ clean: $(addsuffix _clean,$(BUILD_MODULES))
 
 run:
 	qemu-system-i386 -soundhw pcspk -drive format=raw,file=diskimg/cmike.flp,index=0,if=floppy
+
+TAR = tar
+
+dist: all
+	-$(RM) -rf cmike-$(VERSION)
+	-$(MKDIR) cmike-$(VERSION)
+
+	$(CP) LICENSE cmike-$(VERSION)
+	$(CP) misc/** cmike-$(VERSION)
+	$(CP) diskimg/cmike.flp cmike-$(VERSION)
+
+	$(TAR) -c -f cmike-$(VERSION).tar.gz cmike-$(VERSION)
+
+	-$(RM) -rf cmike-$(VERSION)
+
+
 
 #######################################
 

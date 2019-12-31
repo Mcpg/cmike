@@ -1,0 +1,17 @@
+
+Thank you for downloading CMike 0.1.0, a MikeOS 4.6 compatible operating system!
+
+This isn't a stable release, but software should *kinda* work. MikeBASIC
+interpreter and writing to files aren't supported. Expect a lot of bugs. :^)
+
+As there are no finished userspace programs written for CMike, you have to
+resort to running your own software, or programs included with MikeOS. This
+archive should come with load_with_mikeos_software.sh script, which will
+download MikeOS 4.6.1, build its userspace and copy the binaries to cmike.flp
+when executed. Its dependencies are listed in a comment at the top of the file.
+
+CMike GitHub repository: https://github.com/Mcpg/cmike
+MikeOS website: http://mikeos.sourceforge.net/
+
+Have a nice day!
+~Mcpg 31.12.2019

@@ -20,5 +20,7 @@ following targets:
  * `make diskimg` - build the floppy disk image (diskimg/cmike.flp)
  * `make run` - runs QEMU with diskimg/cmike.flp in floppy drive A:
    and PC speaker enabled
+ * `make dist` prepare a cmike-VERSION.tar.gz archive with cmike.flp,
+   all files from misc directory and LICENSE
 
 Have fun. :)
