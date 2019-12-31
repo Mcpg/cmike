@@ -5,7 +5,7 @@
 #define MIKEOS_API_VER 17
 
 #define OS_SEGMENT 0x2000
-#define OS_STACK_SIZE 1024
+#define OS_STACK_SIZE 2048
 
 #include <libc.h>
 #include <bios.h>
