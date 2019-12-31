@@ -6,6 +6,9 @@ AS = nasm
 LD = ia16-elf-ld
 AR = ia16-elf-ar
 
+MCOPY = mcopy
+DD = dd
+
 # Note:
 # The flags disable unused-parameter warning,
 # because every syscall handler will have
