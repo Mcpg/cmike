@@ -2,7 +2,7 @@
 include ../config.mk
 include config.mk
 
-.PHONY: all clean floppy
+.PHONY: all clean floppy $(FLOPPY_IMG_PATH)
 
 all: floppy
 
