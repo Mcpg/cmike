@@ -22,7 +22,7 @@ SectorsPerCluster: db 1
 ReservedSectors:   dw 1
 FatAmount:         db 2
 DentryAmount:      dw 224 ; 14 dentry sectors to read total, 16 entries/sector
-SectorAmount:      dw 2280
+SectorAmount:      dw 2880
 MediaDescriptor:   db 0xF0
 SectorsPerFat:     dw 9
 SectorsPerTrack:   dw 18
