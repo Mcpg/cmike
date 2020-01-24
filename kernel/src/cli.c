@@ -11,7 +11,7 @@ struct cli_integrated_command
     void (*callback)(char* cmd);
 };
 
-#define INTEGRATED_COMMAND_AMOUNT 9
+#define INTEGRATED_COMMAND_AMOUNT 7
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT];
 
 void version_cmd(char* cmd)
@@ -71,18 +71,6 @@ void clear_cmd(char* cmd)
     os_clear_screen();
 }
 
-void dump_boot_sector_cmd(char* cmd)
-{
-    ASSERT(cmike_read_boot_sector());
-
-    os_print_string("Partial boot sector dump:\r\n", GRAY_COLOR);
-    os_print_string(" * ", GRAY_COLOR);
-    os_print_string("Volume label: ", DEFAULT_COLOR);
-    cmike_print_chars(&boot_sector.volume_label[0], FAT_VOLUME_LABEL_SIZE, GRAY_COLOR);
-
-    os_print_newline(DEFAULT_COLOR);
-}
-
 void ls_cmd(char* cmd)
 {
     /* NOTE: It's getting near to the stack limit */
@@ -93,58 +81,6 @@ void ls_cmd(char* cmd)
     os_print_newline(DEFAULT_COLOR);
 }
 
-void fat_dump_cmd(char* cmd)
-{
-    int i;
-
-    os_print_string("First 120 cluster values from FAT0:\r\n", GRAY_COLOR);
-
-    for (i = 0; i < 120; i += 8)
-    {
-        os_print_4hex(i, GRAY_COLOR);
-        os_print_string(": ", GRAY_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 1), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 2), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 3), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 4), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 5), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 6), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 7), DEFAULT_COLOR);
-        os_print_newline(DEFAULT_COLOR);
-    }
-
-    os_print_string("\r\n32 entries, offset 0xF0:\r\n", GRAY_COLOR);
-    for (i = 0xF0; i < 0x110; i += 8)
-    {
-        os_print_4hex(i, GRAY_COLOR);
-        os_print_string(": ", GRAY_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 1), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 2), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 3), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 4), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 5), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 6), DEFAULT_COLOR);
-        os_print_space(DEFAULT_COLOR);
-        os_print_4hex(cmike_get_cluster_value(i + 7), DEFAULT_COLOR);
-        os_print_newline(DEFAULT_COLOR);
-    }
-}
-
 static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
 {
     { "help", help_cmd },
@@ -153,9 +89,7 @@ static struct cli_integrated_command commands[INTEGRATED_COMMAND_AMOUNT] =
     { "date", date_cmd },
     { "reboot", reboot_cmd },
     { "clear", clear_cmd },
-    { "dump_boot_sector", dump_boot_sector_cmd },
-    { "ls", ls_cmd },
-    { "fat_dump", fat_dump_cmd }
+    { "ls", ls_cmd }
 };
 
 void start_cli()
